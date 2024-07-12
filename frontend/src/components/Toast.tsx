@@ -6,15 +6,15 @@ type ToastProps = {
   onClose: () => void
 }
 
-const Toast = ({ message, type }: ToastProps) => {
+const Toast = ({ message, type, onClose }: ToastProps) => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      onclose()
+      onClose()
     }, 5000)
     return () => {
       clearTimeout(timer)
     }
-  }, [onclose])
+  }, [onClose])
 
   const styles =
     type === 'SUCCESS'

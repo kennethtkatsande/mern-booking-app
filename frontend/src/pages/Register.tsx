@@ -3,14 +3,15 @@ import { useMutation, useQueryClient } from 'react-query'
 import * as apiClient from '../api-client'
 import { useAppContext } from '../contexts/AppContext'
 import { useNavigate } from 'react-router-dom'
+import { RegisterFormData } from '../mytypes/types'
 
-type RegisterFormData = {
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-  confirmPassword: string
-}
+//type RegisterFormData = {
+// firstName: string
+//lastName: string
+//email: string
+// password: string
+// confirmPassword: string
+//}
 
 const Register = () => {
   const queryClient = useQueryClient()
@@ -34,11 +35,12 @@ const Register = () => {
     },
   })
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onSubmit = handleSubmit((data) => {
     mutation.mutate(data)
   })
   return (
-    <form className="flex flex-col gap-5">
+    <form className="flex flex-col gap-5" onSubmit={onSubmit}>
       <h2 className="text-3xl font-bold">Create an Account</h2>
       <div className="flex flex-col md:flex-row gap-5">
         <label className="text-gray-700 text-sm font-bold">
