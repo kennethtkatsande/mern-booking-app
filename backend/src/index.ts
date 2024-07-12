@@ -7,6 +7,12 @@ import authRoutes from './routes/auth'
 import cookieParser from 'cookie-parser'
 
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING as string)
+//.then(() =>
+//  console.log(
+//   'Connected to database: ',
+//   process.env.MONGODB_CONNECTION_STRING
+//)
+//) the commented part helps to test the e2e db
 
 const app = express()
 app.use(cookieParser())
