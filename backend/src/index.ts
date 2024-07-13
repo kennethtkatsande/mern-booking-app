@@ -15,7 +15,13 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 })
 
-mongoose.connect(process.env.MONGODB_CONNECTION_STRING as string)
+// Ensure MONGODB_CONNECTION_STRING is loaded from .env
+const mongoUri = process.env.MONGODB_CONNECTION_STRING as string
+if (!mongoUri) {
+  throw new Error('MONGODB_CONNECTION_STRING is not defined in .env file')
+}
+
+mongoose.connect(mongoUri)
 //.then(() =>
 //  console.log(
 //   'Connected to database: ',
